@@ -1,0 +1,107 @@
+package br.com.fiap.rateldev.test;
+
+import br.com.fiap.rateldev.business.UsuarioBO;
+
+public class Teste {
+
+	public static void main(String[] args) {
+		//Cadastro de Usuário: correto
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "rateldev@gmail.com", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: senhas não conferem
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "rateldev@gmail.com", "xablau973164", "osasco");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: nome em branco
+		try {
+			UsuarioBO.cadastrar("", "rateldev@gmail.com", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: email em branco
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: senha em branco
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "rateldev@gmail.com", "", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: confirmar senha em branco (deve retornar senha não confere)
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "rateldev@gmail.com", "xablau973164", "");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: email inválido
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "rateldevgmail.com", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: email em uso (seguindo que o primeiro passo já foi cadastrado)
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "rateldevgmail.com", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: nome mínimo caracteres
+		try {
+			UsuarioBO.cadastrar("Abu", "rateldevgmail.com", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: nome máximo caracteres
+		try {
+			UsuarioBO.cadastrar("ShimbalaiequandovejoosolbeijandoomarShimbalaietodavezqueelevairepousarShimbalaiequandovejoosolbeijandoomar", "rateldevgmail.com", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: email mínimo caracteres
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "a@a.br", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: email máximo caracteres
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "ShimbalaiequandovejoosolbeijandoomarShimbalaietodavezqueelevairepousarShimbalaiequandovejoosolbeijandoomar@bla.com", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: senha mínimo caracteres
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "rateldev@gmail.com", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		//Cadastro de Usuário: senha máximo caracteres
+		try {
+			UsuarioBO.cadastrar("Ratel Dev", "rateldev@gmail.com", "xablau973164", "xablau973164");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+}

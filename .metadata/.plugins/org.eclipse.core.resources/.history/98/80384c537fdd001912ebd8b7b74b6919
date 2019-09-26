@@ -1,0 +1,27 @@
+package br.com.fiap.rateldev.business;
+
+import br.com.fiap.rateldev.dao.UsuarioDAO;
+
+public class UsuarioBO {
+	public static boolean cadastrar(String nome, String email, String senha, String confirmarSenha) throws Exception  {
+		if (senha.equals(""))
+			throw new Exception("Senha não pode estar em branco");
+		
+		if (nome.equals(""))
+			throw new Exception("Nome não pode estar em branco");
+		
+		if (senha.equals(""))
+			throw new Exception("Senha não pode estar em branco");
+		
+		if (!senha.equals(confirmarSenha))
+			throw new Exception("Senhas não conferem");
+		
+		UsuarioDAO udao = new UsuarioDAO();
+		
+		if (udao.buscarUsuarioPorEmail(email) != null) {
+			throw new Exception("Email já está em uso");
+		}
+		
+		udao.cadastrar(nome, email, confirmarSenha)
+	}
+}

@@ -1,0 +1,9 @@
+package br.com.fiap.rateldev.test;
+
+public class Teste {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

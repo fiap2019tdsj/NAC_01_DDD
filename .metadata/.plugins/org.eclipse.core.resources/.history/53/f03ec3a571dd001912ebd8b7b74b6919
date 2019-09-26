@@ -1,0 +1,16 @@
+package br.com.fiap.rateldev.business;
+
+public class UsuarioBO {
+	public static boolean cadastrar(String nome, String email, String senha) throws Exception  {
+		if (senha.equals(""))
+			throw new Exception("Senha não pode estar em branco");
+		
+		if (nome.equals(""))
+			throw new Exception("Nome não pode estar em branco");
+		
+		if (senha.equals(""))
+			throw new Exception("Senha não pode estar em branco");
+		
+		return false;
+	}
+}

@@ -1,0 +1,70 @@
+package br.com.fiap.rateldev.business;
+
+import br.com.fiap.rateldev.beans.Usuario;
+import br.com.fiap.rateldev.dao.UsuarioDAO;
+
+public class UsuarioBO {
+	public static boolean cadastrar(String nome, String email, String senha, String confirmarSenha) throws Exception  {
+		UsuarioDAO udao = new UsuarioDAO();
+		
+		if (email.equals(""))
+			throw new Exception("Email não pode estar em branco");
+		
+		if (email.length() > 100)
+			throw new Exception("Email deve ter no máximo 100 caracteres");
+		
+		if (nome.equals(""))
+			throw new Exception("Nome não pode estar em branco");
+		
+		if (nome.length() > 100)
+			throw new Exception("Nome deve ter no máximo 100 caracteres");
+		
+		if (senha.equals(""))
+			throw new Exception("Senha não pode estar em branco");
+		
+		if (senha.length() > 100)
+			throw new Exception("Senha deve ter no máximo 100 caracteres");
+		
+		if (confirmarSenha.equals(""))
+			throw new Exception("Confirmar senha não pode estar em branco");
+		
+		if (!senha.equals(confirmarSenha))
+			throw new Exception("Senhas não conferem");
+		
+		if (udao.buscarUsuarioPorEmail(email) != null) {
+			throw new Exception("Email já está em uso");
+		}
+		
+		return udao.cadastrar(nome, email, senha);
+	}
+	
+	public static boolean alterar(int id, String nome, String senha, String confirmarSenha) throws Exception {
+		UsuarioDAO udao = new UsuarioDAO();
+		
+		if (nome.equals(""))
+			throw new Exception("Nome não pode estar em branco");
+		
+		if (senha.equals(""))
+			throw new Exception("Senha não pode estar em branco");
+		
+		if (confirmarSenha.equals(""))
+			throw new Exception("Confirmar senha não pode estar em branco");
+		
+		if (!senha.equals(confirmarSenha))
+			throw new Exception("Senhas não conferem");
+		
+		return udao.alterar(id, nome, senha);
+	}
+	
+	public static Usuario login(String email, String senha) throws Exception {
+		UsuarioDAO udao = new UsuarioDAO();
+		
+		if (email.equals(""))
+			throw new Exception("Email não pode estar em branco");
+		
+		if (senha.equals(""))
+			throw new Exception("Senha não pode estar em branco");
+		
+		return udao.login(senha, senha);
+	}
+}

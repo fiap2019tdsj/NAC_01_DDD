@@ -1,0 +1,12 @@
+package br.com.fiap.rateldev.test;
+
+import br.com.fiap.rateldev.business.UsuarioBO;
+
+public class Teste {
+
+	public static void main(String[] args) {
+		//Cadastro de Usuário
+		UsuarioBO.cadastrar("", "", "", "");
+	}
+
+}
